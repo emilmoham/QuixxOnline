@@ -21,6 +21,8 @@
 	
 	width: 40px;
 	height: 40px;
+	
+	margin: 0px 2px 0px 2px;
 }
 
 #red {
@@ -88,6 +90,11 @@
 	float: right;
 }
 
+.belowColors #right input {
+	margin: 0px 2px 0px 2px;
+}
+
+
 .pointsDescription {
 	display: inline-block;
 	
@@ -98,6 +105,7 @@
 	border-radius: 10px;
 	
 	min-width: 30px;
+	margin: 0 2px 0 2px;
 }
 
 #key {
@@ -110,8 +118,14 @@
 	padding-top: 10px;
 }
 
-.score p {
+.score div {
 	display: inline;
+}
+
+
+.score div p {
+	display: inline-block;
+	padding: 0px 3px 0px 3px;
 }
 
 .tbScore {

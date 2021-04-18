@@ -3,12 +3,31 @@
 	<head>
 		<title>Colored Dice Game</title>
 		<meta charset="ISO-8859-1" /> 
-		<link rel="stylesheet" href="main.css" type="text/css" />
+		<link rel="stylesheet" href="frontend/main.css" type="text/css" />
 		<link rel="stylesheet" href="https://pagecdn.io/lib/normalize/8.0.1/normalize.min.css" type="text/css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap" rel="stylesheet" />
+
+		<!-- update the version number as needed -->
+		<script defer src="/__/firebase/8.4.1/firebase-app.js"></script>
+		<!-- include only the Firebase features as you need -->
+		<script defer src="/__/firebase/8.4.1/firebase-auth.js"></script>
+		<script defer src="/__/firebase/8.4.1/firebase-database.js"></script>
+		<script defer src="/__/firebase/8.4.1/firebase-firestore.js"></script>
+		<script defer src="/__/firebase/8.4.1/firebase-functions.js"></script>
+		<script defer src="/__/firebase/8.4.1/firebase-messaging.js"></script>
+		<script defer src="/__/firebase/8.4.1/firebase-storage.js"></script>
+		<script defer src="/__/firebase/8.4.1/firebase-analytics.js"></script>
+		<script defer src="/__/firebase/8.4.1/firebase-remote-config.js"></script>
+		<script defer src="/__/firebase/8.4.1/firebase-performance.js"></script>
+		<!-- 
+		  initialize the SDK after all desired features are loaded, set useEmulator to false
+		  to avoid connecting the SDK to running emulators.
+		-->
+		<script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-		<script src="main.js"></script>
+		<script src="frontend/main.js"></script>
 	</head>
 	<body>
 		<div id="app">
@@ -41,6 +60,6 @@
 				</div>
 			</div>
 		</div>
-		<script src="QwixxAppClient.js"></script>
+		<script src="frontend/QwixxAppClient.js"></script>
 	</body>
 </html>

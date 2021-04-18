@@ -1,0 +1,5 @@
+Firebase:
+    https://firebase.google.com/docs/hosting/quickstart
+
+    cmd -> firebase deploy
+        - Deploys code to https://qwixxonline.web.app

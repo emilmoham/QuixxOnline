@@ -3,14 +3,14 @@
         <cross-button
           v-for="(rollValue,index) in rollSetDescending" 
           :key="index"
-          v-on:click="log(index)"
+          v-on:changedState="select(index)"
           v-bind:label="rollValue" ></cross-button>
     </div>
     <div v-else class="colorGroup">
         <cross-button
           v-for="(rollValue,index) in rollSetAscending" 
           :key="index" 
-          v-on:click="log(index)"
+          v-on:changedState="select(index)"
           v-bind:label="rollValue" ></cross-button>
     </div>
 </template>
@@ -36,7 +36,7 @@ export default {
   methods: {
     select: function(buttonIndex) {
       this.crossed[buttonIndex] = !this.crossed[buttonIndex];
-      this.$emit('changeScore', 10);
+      this.$emit('changeScore', this.getScore());
     },
     getScore: function() {
       return this.crossed.filter(x => x == true).length

@@ -1,9 +1,9 @@
 <template>
     <div class="ScoreCard">
-        <color-group id="red" v-on:changeScore="updateScore($event)"></color-group>
-        <color-group id="yellow"></color-group>
-        <color-group id="green" v-bind:reversed="true"></color-group>
-        <color-group id="blue" v-bind:reversed="true"></color-group>
+        <color-group id="red" v-on:changeScore="updateScore($event, 'red')"></color-group>
+        <color-group id="yellow" v-on:changeScore="updateScore($event, 'yellow')"></color-group>
+        <color-group id="green" v-bind:reversed="true" v-on:changeScore="updateScore($event, 'green')"></color-group>
+        <color-group id="blue" v-bind:reversed="true" v-on:changeScore="updateScore($event, 'blue')"></color-group>
         <div class="belowColors">
           <div class="left">
             <div class="pointsDescription ">
@@ -12,7 +12,7 @@
               <p>points</p>
             </div>
             <div 
-              v-for="(crossCountValue, index) in crossCountValues"
+              v-for="(crossCountValue, index) in crossCountValues.slice(1)"
               :key="index"
               class="pointsDescription">
               <p>{{ index + 1 }}</p>
@@ -26,17 +26,17 @@
           </div>
         </div>
         <div class="score">
-          <div><input class="tbScore" id="red" value="0" readonly /></div>
+          <div><input class="tbScore" id="red" v-model="scores['red']" readonly /></div>
           <p>+</p>
-          <div><input class="tbScore" id="yellow" value="0" readonly /></div>
+          <div><input class="tbScore" id="yellow" v-model="scores['yellow']" readonly /></div>
           <p>+</p>
-          <div><input class="tbScore" id="green" value="0" readonly /></div>
+          <div><input class="tbScore" id="green" v-model="scores['green']" readonly /></div>
           <p>+</p>
-          <div><input class="tbScore" id="blue" value="0" readonly /></div>
+          <div><input class="tbScore" id="blue" v-model="scores['blue']" readonly /></div>
           <p>-</p>
-          <div><input class="tbScore" id="skipPenalty" value="0" readonly /></div>
+          <div><input class="tbScore" id="skipPenalty" v-model="scores['skips']" readonly /></div>
           <p>=</p>
-          <div><input class="tbScore" id="Total" value="0" readonly /></div>
+          <div><input class="tbScore" id="Total" v-model="scoreTotal"  readonly /></div>
         </div>
     </div>
 </template>
@@ -51,14 +51,17 @@ export default {
   },
   data: function() {
     return {
-      crossCountValues: [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78],
+      crossCountValues: [0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78],
       allowedSkips: 4,
-      skipPenalty: 5
+      skipPenalty: 5,
+      scores: { "red": 0, "yellow": 0, "green":0, "blue":0, "skips": 0, "total": 0 },
+      scoreTotal: 0
     }
   },
   methods: {
-    updateScore: function(stuff) {
-      this.console.log(stuff);
+    updateScore: function(crossCount, color) {
+      this.scores[color] = this.crossCountValues[crossCount];
+      this.scoreTotal = Object.keys(this.scores).reduce((sum,key)=>sum+parseInt(this.scores[key]), 0);
     }
   }
 }

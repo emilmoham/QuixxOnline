@@ -15,7 +15,8 @@ export default {
   },
   methods: {
     toggleCross: function() {
-      this.isSelected = !this.isSelected
+      this.isSelected = !this.isSelected;
+      this.$emit('changedState')
     }
   }
 }
